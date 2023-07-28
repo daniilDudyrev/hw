@@ -1,0 +1,22 @@
+﻿CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(255),
+    CourseDescription TEXT,
+    MaxCapacity INT
+);
+
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    StudentName VARCHAR(255),
+    StudentEmail VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE Registrations (
+    RegistrationID INT PRIMARY KEY,
+    CourseID INT,
+    StudentID INT,
+    RegistrationDate DATE,
+    Status VARCHAR(50),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+);
